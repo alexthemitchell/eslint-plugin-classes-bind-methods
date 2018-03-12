@@ -37,6 +37,10 @@ ruleTester.run('react-bind-this', rule, {
       code: 'class D { constructor() {} }',
       parserOptions: { ecmaVersion: 6 },
     },
+    {
+      code: 'class E extends D { constructor(props){ super(props); this.state = props; } }',
+      parserOptions: { ecmaVersion: 6 },
+    },
   ],
 
   invalid: [
