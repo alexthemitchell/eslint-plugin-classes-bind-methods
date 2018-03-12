@@ -13,7 +13,7 @@
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "eslint src/",
     "lint:test": "eslint test/",
-    "test:mocha": "nyc mocha tests --recursive",
+    "test:mocha": "nyc mocha --recursive test/",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run lint && npm run test:mocha"
   },
