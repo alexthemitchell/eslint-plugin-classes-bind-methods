@@ -11,8 +11,8 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha tests --recursive",
-    "verify": "npm run lint && npm run test"
+    "tests:mocha": "mocha tests --recursive",
+    "test": "npm run lint && npm run tests:mocha"
   },
   "dependencies": {
     "requireindex": "~1.1.0"
