@@ -1,8 +1,7 @@
 language: node_js
-  node_js:
-    - "node"
-    - "iojs"
-    - "lts/*"
-  cache:
-    directories:
-      - "node_modules"
+node_js:
+  - "node"
+  - "iojs"
+cache:
+  directories:
+    - "node_modules"
