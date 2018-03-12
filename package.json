@@ -15,6 +15,7 @@
     "lint:test": "eslint test/",
     "test:mocha": "mocha tests --recursive",
     "coverage": "nyc npm run test:mocha",
+    "coveralls": "nyc npm run test:mocha -- -- rport lcovonly && cat ./coverage/lcov.info | coveralls",
     "test": "npm run lint && npm run test:mocha"
   },
   "dependencies": {
@@ -22,9 +23,11 @@
     "requireindex": "~1.1.0"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "eslint": "^3.9.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
+    "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^11.4.1"
   },
   "engines": {
