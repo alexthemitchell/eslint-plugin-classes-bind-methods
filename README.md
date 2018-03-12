@@ -21,6 +21,15 @@ $ npm install eslint-plugin-classes-bind-methods --save-dev
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-classes-bind-methods` globally.
 
+## Purpose
+
+Instance methods which call out to other instance methods or variables using the `this` keyword must have been bound to `this` before the call, otherwise a TypeError will occur. 
+
+## Rule Details
+
+Reduce the occurance of TypeErrors caused by dereferencing an undefined `this` inside an instance method.
+
+
 ## Usage
 
 Add `classes-bind-methods` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
