@@ -1,0 +1,4 @@
+{
+  "NO_CONSTRUCTOR_TEXT": "Class requires constructor to bind instance functions",
+  "NO_BIND_IN_CONSTRUCTOR_TEXT": "Method is not bound in constructor"
+}

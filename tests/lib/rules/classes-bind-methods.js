@@ -8,6 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
+const { NO_CONSTRUCTOR_TEXT, NO_BIND_IN_CONSTRUCTOR_TEXT } = require('../../../lib/constants/Errors.json');
 var rule = require('../../../lib/rules/classes-bind-methods'),
 
   RuleTester = require('eslint').RuleTester;
@@ -48,14 +49,14 @@ ruleTester.run('react-bind-this', rule, {
       code: 'class Y { foo() {}}',
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: 'Require constructor to bind methods',
+        message: NO_CONSTRUCTOR_TEXT,
         type: 'ClassBody'
       }]
     }, {
       code: 'class Z { constructor() {} foo() {}}',
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: 'Require bind in constructor',
+        message: NO_BIND_IN_CONSTRUCTOR_TEXT,
         type: 'MethodDefinition'
       }]
     },

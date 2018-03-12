@@ -38,16 +38,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "classes-bind-methods/rule-name": 2
+        "classes-bind-methods/classes-bind-methods": "error" 
     }
 }
 ```
-
-## Supported Rules
-
-* Fill in provided rules here
-
-
-
-
 
