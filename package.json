@@ -13,9 +13,8 @@
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "eslint src/",
     "lint:test": "eslint test/",
-    "test:mocha": "mocha tests --recursive",
-    "coverage": "nyc npm run test:mocha",
-    "coveralls": "nyc npm run test:mocha -- -- rport lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test:mocha": "nyc mocha tests --recursive",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run lint && npm run test:mocha"
   },
   "dependencies": {
