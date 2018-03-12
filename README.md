@@ -45,4 +45,4 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* [classes-bind-methods]('docs/classes-bind-methods.md')
+* [classes-bind-methods](https://github.com/alexthemitchell/eslint-plugin-classes-bind-methods/blob/master/docs/rules/classes-bind-methods.md)
