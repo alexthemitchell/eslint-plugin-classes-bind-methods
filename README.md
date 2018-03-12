@@ -1,4 +1,6 @@
 # eslint-plugin-classes-bind-methods
+[![Build Status](https://travis-ci.org/alexthemitchell/eslint-plugin-classes-bind-methods.svg?branch=master)](https://travis-ci.org/alexthemitchell/eslint-plugin-classes-bind-methods)
+[![npm version](https://badge.fury.io/js/eslint-plugin-classes-bind-methods.svg)](https://badge.fury.io/js/eslint-plugin-classes-bind-methods)
 
 Expect classes to bind instance methods in the constructor
 
