@@ -53,7 +53,7 @@ ruleTester.run('react-bind-this', rule, {
         type: 'ClassBody'
       }]
     }, {
-      code: 'class Z { constructor() {} foo() {}}',
+      code: 'class Z { constructor(x) {var y;  y = x; } foo() {}}',
       parserOptions: { ecmaVersion: 6 },
       errors: [{
         message: NO_BIND_IN_CONSTRUCTOR_TEXT,

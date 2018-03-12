@@ -10,9 +10,12 @@
   "author": "Alex Mitchell",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "eslint .",
-    "tests:mocha": "mocha tests --recursive",
-    "test": "npm run lint && npm run tests:mocha"
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:src": "eslint src/",
+    "lint:test": "eslint test/",
+    "test:mocha": "mocha tests --recursive",
+    "coverage": "nyc npm run test:mocha",
+    "test": "npm run lint && npm run test:mocha"
   },
   "dependencies": {
     "lodash": "^4.17.5",
@@ -20,7 +23,9 @@
   },
   "devDependencies": {
     "eslint": "^3.9.1",
-    "mocha": "^3.1.2"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.2",
+    "nyc": "^11.4.1"
   },
   "engines": {
     "node": ">=0.10.0"
