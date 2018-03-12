@@ -43,3 +43,6 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
+## Supported Rules
+
+* [classes-bind-methods]('docs/classes-bind-methods.md')
