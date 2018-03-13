@@ -8,18 +8,24 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const { NO_CONSTRUCTOR_TEXT, NO_BIND_IN_CONSTRUCTOR_TEXT } = require('../../../lib/constants/Errors.json');
-var rule = require('../../../lib/rules/classes-bind-methods'),
+const { methodNotBoundInConstructorErrorText, noConstructorErrorText } = require('../../../lib/utils/errors');
 
+var rule = require('../../../lib/rules/classes-bind-methods'),
   RuleTester = require('eslint').RuleTester;
 
+
+//------------------------------------------------------------------------------
+// Variables
+//------------------------------------------------------------------------------
+
+const identifierSafeArbitraryString = 'ABC123';
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run('react-bind-this', rule, {
+ruleTester.run('classes-bind-methods', rule, {
 
   valid: [
     {
@@ -42,6 +48,10 @@ ruleTester.run('react-bind-this', rule, {
       code: 'class E extends D { constructor(props){ super(props); this.state = props; } }',
       parserOptions: { ecmaVersion: 6 },
     },
+    {
+      code: 'class F extends Component {}; export default F;',
+      parserOptions: { ecmaVersion: 6, sourceType: 'module' },
+    },
   ],
 
   invalid: [
@@ -49,14 +59,14 @@ ruleTester.run('react-bind-this', rule, {
       code: 'class Y { foo() {}}',
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: NO_CONSTRUCTOR_TEXT,
+        message: noConstructorErrorText,
         type: 'ClassBody'
       }]
     }, {
-      code: 'class Z { constructor(x) {var y;  y = x; } foo() {}}',
+      code: `class Z { constructor(x) {var y;  y = x; } ${identifierSafeArbitraryString}() {}}`,
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: NO_BIND_IN_CONSTRUCTOR_TEXT,
+        message: methodNotBoundInConstructorErrorText(identifierSafeArbitraryString),
         type: 'MethodDefinition'
       }]
     },
