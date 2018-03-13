@@ -24,33 +24,27 @@ const identifierSafeArbitraryString = 'ABC123';
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 6 } });
 ruleTester.run('classes-bind-methods', rule, {
 
   valid: [
     {
       code: 'class A { constructor() { this.foo = this.foo.bind(this) } foo() {}}',
-      parserOptions: { ecmaVersion: 6 },
     },
     {
       code: 'class B { static foo() {} }',
-      parserOptions: { ecmaVersion: 6 },
     },
     {
       code: 'class C {}',
-      parserOptions: { ecmaVersion: 6 },
     },
     {
       code: 'class D { constructor() {} }',
-      parserOptions: { ecmaVersion: 6 },
     },
     {
       code: 'class E extends D { constructor(props){ super(props); this.state = props; } }',
-      parserOptions: { ecmaVersion: 6 },
     },
     {
       code: `class F { ${identifierSafeArbitraryString}() {} }`,
-      parserOptions: { ecmaVersion: 6 },
       options: [ { ignoreMethodNames: [ identifierSafeArbitraryString ] } ],
     },
   ],
@@ -58,7 +52,6 @@ ruleTester.run('classes-bind-methods', rule, {
   invalid: [
     {
       code: 'class Y { foo() {}}',
-      parserOptions: { ecmaVersion: 6 },
       errors: [{
         message: noConstructorErrorText('Y'),
         type: 'ClassBody'
@@ -68,7 +61,6 @@ ruleTester.run('classes-bind-methods', rule, {
       }]
     }, {
       code: `class Z { constructor(x) {var y;  y = x; } ${identifierSafeArbitraryString}() {}}`,
-      parserOptions: { ecmaVersion: 6 },
       errors: [{
         message: methodNotBoundInConstructorErrorText(identifierSafeArbitraryString, 'Z'),
         type: 'MethodDefinition'
