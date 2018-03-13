@@ -8,11 +8,8 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const { methodNotBoundInConstructorErrorText, noConstructorErrorText } = require('../../../lib/utils/errors');
-
 var rule = require('../../../lib/rules/classes-bind-methods'),
   RuleTester = require('eslint').RuleTester;
-
 
 //------------------------------------------------------------------------------
 // Variables
@@ -53,16 +50,27 @@ ruleTester.run('classes-bind-methods', rule, {
     {
       code: 'class Y { foo() {}}',
       errors: [{
-        message: noConstructorErrorText('Y'),
+        messageId: 'noConstructor',
+        data: {
+          className: 'Y',
+        },
         type: 'ClassBody'
       }, {
-        message: methodNotBoundInConstructorErrorText('foo', 'Y'),
+        messageId: 'methodNotBoundInConstructor',
+        data: {
+          className: 'Y',
+          methodName: 'foo',
+        },
         type: 'MethodDefinition'
       }]
     }, {
       code: `class Z { constructor(x) {var y;  y = x; } ${identifierSafeArbitraryString}() {}}`,
       errors: [{
-        message: methodNotBoundInConstructorErrorText(identifierSafeArbitraryString, 'Z'),
+        messageId: 'methodNotBoundInConstructor',
+        data: {
+          className: 'Z',
+          methodName: identifierSafeArbitraryString,
+        },
         type: 'MethodDefinition'
       }]
     },
