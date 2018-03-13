@@ -49,11 +49,7 @@ ruleTester.run('classes-bind-methods', rule, {
       parserOptions: { ecmaVersion: 6 },
     },
     {
-      code: 'class F extends Component {}; export default F;',
-      parserOptions: { ecmaVersion: 6, sourceType: 'module' },
-    },
-    {
-      code: `class G { ${identifierSafeArbitraryString}() {} }`,
+      code: `class F { ${identifierSafeArbitraryString}() {} }`,
       parserOptions: { ecmaVersion: 6 },
       options: [ { ignoreMethodNames: [ identifierSafeArbitraryString ] } ],
     },
