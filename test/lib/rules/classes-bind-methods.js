@@ -60,14 +60,17 @@ ruleTester.run('classes-bind-methods', rule, {
       code: 'class Y { foo() {}}',
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: noConstructorErrorText,
+        message: noConstructorErrorText('Y'),
         type: 'ClassBody'
+      }, {
+        message: methodNotBoundInConstructorErrorText('foo', 'Y'),
+        type: 'MethodDefinition'
       }]
     }, {
       code: `class Z { constructor(x) {var y;  y = x; } ${identifierSafeArbitraryString}() {}}`,
       parserOptions: { ecmaVersion: 6 },
       errors: [{
-        message: methodNotBoundInConstructorErrorText(identifierSafeArbitraryString),
+        message: methodNotBoundInConstructorErrorText(identifierSafeArbitraryString, 'Z'),
         type: 'MethodDefinition'
       }]
     },
