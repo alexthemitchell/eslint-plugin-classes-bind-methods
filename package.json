@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-classes-bind-methods",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Expect classes to bind instance methods in the constructor",
   "keywords": [
     "eslint",
