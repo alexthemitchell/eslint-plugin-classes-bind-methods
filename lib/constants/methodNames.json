@@ -1,0 +1,3 @@
+{
+  "reactBoundMethods": ["render", "componentWillMount", "componentWillMount", "componentWillReceiveProps", "shouldComponentUpdate", "componentWillUpdate", "componentDidUpdate", "componentWillUnmount", "componentDidCatch"]
+}

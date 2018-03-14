@@ -51,7 +51,38 @@ class D {
 
 ### Options
 
-React: Should disable default overridden react functions
+`classes-bind-methods` can also be configured to ignore every occurance of a given method name in classes throughout your project. For example, to not enforce binding for methods named `foo`, extend your `.eslintrc` file to include the following:
+
+```json
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":[{
+      "ignoreMethodNames": ["foo"], 
+    }, "error"],  
+  }
+  ...
+}
+```
+
+### React
+
+If you have [correctly configured eslint with React](https://github.com/yannickcr/eslint-plugin-react), standard Component lifecycle methods will automatically be ignored. If you're getting these errors and find it obnoxious to bind `render` in the `constructor`, make sure that you've included `react` in your eslint settings, as follows:
+
+```json
+// .eslintrc.json (or similar)
+{
+  ...
+  "settings": {
+    "react": {
+      /* Honestly you can put whatever you want here and this rule will behave no differently */
+    }
+  }
+  ...
+}
+
+```
 
 ## When Not To Use It
 
@@ -59,6 +90,6 @@ Give a short description of when it would be appropriate to turn off this rule.
 
 ## Further Reading
 
-* [class-methods-use-this](https://github.com/eslint/eslint/blob/master/docs/rules/class-methods-use-this.md) 
+* [class-methods-use-this](https://github.com/eslint/eslint/blob/master/docs/rules/class-methods-use-this.md)
 * [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 * [Static Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static)

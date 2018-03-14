@@ -44,6 +44,10 @@ ruleTester.run('classes-bind-methods', rule, {
       code: `class F { ${identifierSafeArbitraryString}() {} }`,
       options: [ { ignoreMethodNames: [ identifierSafeArbitraryString ] } ],
     },
+    {
+      code: 'class G { render() {} }',
+      settings: { react: {} },
+    },
   ],
 
   invalid: [
