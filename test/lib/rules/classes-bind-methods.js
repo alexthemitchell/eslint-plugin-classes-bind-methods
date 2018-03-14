@@ -66,9 +66,10 @@ ruleTester.run('classes-bind-methods', rule, {
           methodName: 'foo',
         },
         type: 'MethodDefinition'
-      }]
+      }],
+      output: 'class Y { constructor(){}foo() {}}',
     }, {
-      code: `class Z { constructor(x) {var y;  y = x; } ${identifierSafeArbitraryString}() {}}`,
+      code: `class Z { constructor(x) {var y;y = x; } ${identifierSafeArbitraryString}() {}}`,
       errors: [{
         messageId: 'methodNotBoundInConstructor',
         data: {
@@ -76,7 +77,8 @@ ruleTester.run('classes-bind-methods', rule, {
           methodName: identifierSafeArbitraryString,
         },
         type: 'MethodDefinition'
-      }]
+      }],
+      output: `class Z { constructor(x) {var y;y = x;this.${identifierSafeArbitraryString} = this.${identifierSafeArbitraryString}.bind(this) } ${identifierSafeArbitraryString}() {}}`,
     },
   ]
 });
