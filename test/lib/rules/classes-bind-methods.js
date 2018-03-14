@@ -54,7 +54,7 @@ ruleTester.run('classes-bind-methods', rule, {
         data: {
           className: 'Y',
         },
-        type: 'ClassBody'
+        type: 'ClassDeclaration'
       }, {
         messageId: 'methodNotBoundInConstructor',
         data: {
