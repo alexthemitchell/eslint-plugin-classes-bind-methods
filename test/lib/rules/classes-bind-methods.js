@@ -48,6 +48,14 @@ ruleTester.run('classes-bind-methods', rule, {
       code: 'class G { render() {} }',
       settings: { react: {} },
     },
+    {
+      code: `class H { ${identifierSafeArbitraryString}() {} }`,
+      options: [ { ignoreClasses: [ 'H' ] } ],
+    },
+    {
+      code: `class I { ${identifierSafeArbitraryString}() {} }`,
+      options: [ { onlyClasses: [ 'H' ] } ],
+    },
   ],
 
   invalid: [
