@@ -48,6 +48,14 @@ ruleTester.run('classes-bind-methods', rule, {
       code: 'class G { render() {} }',
       settings: { react: {} },
     },
+    {
+      code: `class H extends ${identifierSafeArbitraryString} { foo() {} }`,
+      options: [ { ignoreSubclasses: [ identifierSafeArbitraryString ] } ],
+    },
+    {
+      code: `class ${identifierSafeArbitraryString} extends I { foo() {} }`,
+      options: [ { onlySubclasses: [ identifierSafeArbitraryString ] } ],
+    },
   ],
 
   invalid: [
