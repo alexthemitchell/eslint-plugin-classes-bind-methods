@@ -24,7 +24,7 @@ $ npm install eslint-plugin-classes-bind-methods --save-dev
 
 ## Purpose
 
-Instance methods which call out to other instance methods or variables using the `this` keyword must have been bound to `this` before the call, otherwise a TypeError will occur. 
+Instance methods which call out to other instance methods or variables using the `this` keyword must have been bound to `this` before the call, otherwise a TypeError will occur.
 
 ## Rule Details
 
@@ -49,14 +49,15 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "classes-bind-methods/classes-bind-methods": "error" 
+        "classes-bind-methods/classes-bind-methods": "error"
     }
 }
 ```
 
 ### Options
 
-`classes-bind-methods` can also be configured to ignore every occurance of a given method name in classes throughout your project. For example, to not enforce binding for methods named `foo`, extend your `.eslintrc` file to include the following:
+#### Ignoring Specific Methods
+`classes-bind-methods` can be configured to ignore every occurance of a given method name in classes throughout your project. For example, to not enforce binding for methods named `foo`, extend your `.eslintrc` file to include the following:
 
 ```js
 // .eslintrc.json (or similar)
@@ -64,8 +65,45 @@ Then configure the rules you want to use under the rules section.
   ...
   "rules": {
     "classes-bind-methods/classes-bind-methods":[{
-      "ignoreMethodNames": ["foo"], 
-    }, "error"],  
+      ...
+      "ignoreMethodNames": ["foo"],
+      ...
+    }, "error"],
+  }
+  ...
+}
+```
+
+#### Subclasses
+The rule can also be configured to only consider or ignore classes which extend one of a specified set classes. For example, to only consider classes which extend `foo`, modify your `.eslintrc` file to include the following:
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":[{
+      ...
+      "onlySubclasses": ["foo"],
+      ...
+    }, "error"],
+  }
+  ...
+}
+```
+
+To consider every class except those in a specific set (like `foo` and `bar`), modify your `.eslintrc` file to include the following:
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":[{
+      ...
+      "ignoreSubclasses": ["foo", "bar"],
+      ...
+    }, "error"],
   }
   ...
 }

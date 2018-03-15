@@ -49,12 +49,12 @@ ruleTester.run('classes-bind-methods', rule, {
       settings: { react: {} },
     },
     {
-      code: `class H { ${identifierSafeArbitraryString}() {} }`,
-      options: [ { ignoreClasses: [ 'H' ] } ],
+      code: `class H extends ${identifierSafeArbitraryString} { foo() {} }`,
+      options: [ { ignoreSubclasses: [ identifierSafeArbitraryString ] } ],
     },
     {
-      code: `class I { ${identifierSafeArbitraryString}() {} }`,
-      options: [ { onlyClasses: [ 'H' ] } ],
+      code: `class ${identifierSafeArbitraryString} extends I { foo() {} }`,
+      options: [ { onlySubclasses: [ identifierSafeArbitraryString ] } ],
     },
   ],
 
