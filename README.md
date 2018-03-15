@@ -64,11 +64,11 @@ Then configure the rules you want to use under the rules section.
 {
   ...
   "rules": {
-    "classes-bind-methods/classes-bind-methods":[{
+    "classes-bind-methods/classes-bind-methods":["error", {
       ...
       "ignoreMethodNames": ["foo"],
       ...
-    }, "error"],
+    }],
   }
   ...
 }
@@ -82,11 +82,11 @@ The rule can also be configured to only consider or ignore classes which extend 
 {
   ...
   "rules": {
-    "classes-bind-methods/classes-bind-methods":[{
+    "classes-bind-methods/classes-bind-methods":["error", {
       ...
       "onlySubclasses": ["foo"],
       ...
-    }, "error"],
+    }],
   }
   ...
 }
@@ -100,10 +100,11 @@ To consider every class except those in a specific set (like `foo` and `bar`), m
   ...
   "rules": {
     "classes-bind-methods/classes-bind-methods":[{
+    "classes-bind-methods/classes-bind-methods":["error", {
       ...
       "ignoreSubclasses": ["foo", "bar"],
       ...
-    }, "error"],
+    }],
   }
   ...
 }

@@ -50,7 +50,77 @@ class D {
 ```
 
 ### Options
+#### Ignoring Specific Methods
+`classes-bind-methods` can be configured to ignore every occurance of a given method name in classes throughout your project. For example, to not enforce binding for methods named `foo`, extend your `.eslintrc` file to include the following:
 
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":["error", {
+      ...
+      "ignoreMethodNames": ["foo"],
+      ...
+    }],
+  }
+  ...
+}
+```
+
+#### Subclasses
+The rule can also be configured to only consider or ignore classes which extend one of a specified set classes. For example, to only consider classes which extend `foo`, modify your `.eslintrc` file to include the following:
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":["error", {
+      ...
+      "onlySubclasses": ["foo"],
+      ...
+    }],
+  }
+  ...
+}
+```
+
+To consider every class except those in a specific set (like `foo` and `bar`), modify your `.eslintrc` file to include the following:
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":[{
+    "classes-bind-methods/classes-bind-methods":["error", {
+      ...
+      "ignoreSubclasses": ["foo", "bar"],
+      ...
+    }],
+  }
+  ...
+}
+```
+
+### React
+
+If you have [correctly configured eslint with React](https://github.com/yannickcr/eslint-plugin-react), standard Component lifecycle methods will automatically be ignored. If you're getting these errors and find it obnoxious to bind `render` in the `constructor`, make sure that you've included `react` in your eslint settings, as follows:
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "settings": {
+    "react": {
+      /* Honestly you can put whatever you want here and this rule will behave no differently */
+    }
+  }
+  ...
+}
+
+```
 `classes-bind-methods` can also be configured to ignore every occurance of a given method name in classes throughout your project. For example, to not enforce binding for methods named `foo`, extend your `.eslintrc` file to include the following:
 
 ```json
@@ -64,24 +134,6 @@ class D {
   }
   ...
 }
-```
-
-### React
-
-If you have [correctly configured eslint with React](https://github.com/yannickcr/eslint-plugin-react), standard Component lifecycle methods will automatically be ignored. If you're getting these errors and find it obnoxious to bind `render` in the `constructor`, make sure that you've included `react` in your eslint settings, as follows:
-
-```json
-// .eslintrc.json (or similar)
-{
-  ...
-  "settings": {
-    "react": {
-      /* Honestly you can put whatever you want here and this rule will behave no differently */
-    }
-  }
-  ...
-}
-
 ```
 
 ## When Not To Use It
