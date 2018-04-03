@@ -110,6 +110,7 @@ To consider every class except those in a specific set (like `foo` and `bar`), m
 ```
 
 ### Ignoring or including only specific file extensions
+To only apply this rule (or conversely, not apply this rule) to files with a specific file extension (e.g. `.jsx` files), modify your `.eslintrc` file to include the following:
 
 ```js
 // .eslintrc.json (or similar)
@@ -118,9 +119,9 @@ To consider every class except those in a specific set (like `foo` and `bar`), m
   "rules": {
     "classes-bind-methods/classes-bind-methods":["error", {
       ...
-      "ignoreFileExtensions": ["foo","bar"],
+      "ignoreFileExtensions": ["js","foo"],
       ... or ...
-      "onlyFileExtensions": ["foo","bar"],
+      "onlyFileExtensions": ["jsx","bar"],
       ...
     }],
   }
