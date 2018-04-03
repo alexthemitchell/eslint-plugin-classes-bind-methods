@@ -104,6 +104,25 @@ To consider every class except those in a specific set (like `foo` and `bar`), m
 }
 ```
 
+### Ignoring or including only specific file extensions
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":["error", {
+      ...
+      "ignoreFileExtensions": ["foo","bar"],
+      ... or ...
+      "onlyFileExtensions": ["foo","bar"],
+      ...
+    }],
+  }
+  ...
+}
+```
+
 ### React
 
 If you have [correctly configured eslint with React](https://github.com/yannickcr/eslint-plugin-react), standard Component lifecycle methods will automatically be ignored. If you're getting these errors and find it obnoxious to bind `render` in the `constructor`, make sure that you've included `react` in your eslint settings, as follows:

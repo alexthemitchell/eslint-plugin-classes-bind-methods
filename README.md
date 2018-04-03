@@ -99,10 +99,28 @@ To consider every class except those in a specific set (like `foo` and `bar`), m
 {
   ...
   "rules": {
-    "classes-bind-methods/classes-bind-methods":[{
     "classes-bind-methods/classes-bind-methods":["error", {
       ...
       "ignoreSubclasses": ["foo", "bar"],
+      ...
+    }],
+  }
+  ...
+}
+```
+
+### Ignoring or including only specific file extensions
+
+```js
+// .eslintrc.json (or similar)
+{
+  ...
+  "rules": {
+    "classes-bind-methods/classes-bind-methods":["error", {
+      ...
+      "ignoreFileExtensions": ["foo","bar"],
+      ... or ...
+      "onlyFileExtensions": ["foo","bar"],
       ...
     }],
   }
