@@ -56,6 +56,16 @@ ruleTester.run('classes-bind-methods', rule, {
       code: `class ${identifierSafeArbitraryString} extends I { foo() {} }`,
       options: [ { onlySubclasses: [ identifierSafeArbitraryString ] } ],
     },
+    {
+      code: 'class J { foo() {}}',
+      options: [ { onlyFileExtensions: [ identifierSafeArbitraryString ] } ],
+      filename: `${identifierSafeArbitraryString}.not${identifierSafeArbitraryString}`,
+    },
+    {
+      code: 'class G { foo() {}}',
+      options: [ { ignoreFileExtensions: [ identifierSafeArbitraryString ] } ],
+      filename: `${identifierSafeArbitraryString}.${identifierSafeArbitraryString}`,
+    },
   ],
 
   invalid: [
